@@ -3,7 +3,7 @@ pageWithSidebar(
         headerPanel('Will This Mushroom Kill Me?'),
         fluidRow(column(12, 
                         "Note:  This data set includes descriptions of hypothetical samples corresponding to 23 species of gilled mushrooms in the Agaricus and Lepiota Family.  DO NOT use for actual identification!!!",
-                        style = "background-color:#FFDDDD;"),
+                        style = "background-color:#FF0000;"),
                  column(2, selectInput('OdorInput', 
                                        'Odor', 
                                        unique(DescribedMushrooms$Odor))),
@@ -19,10 +19,13 @@ pageWithSidebar(
                  column(2, selectInput('StalkSurfaceAboveRingInput', 
                                        'StalkSurfaceAboveRing', 
                                        unique(DescribedMushrooms$StalkSurfaceAboveRing))),
+                 column(12, htmlOutput("text"),
+                        style = "background-color:#FFA500;"),
                  column(12, actionButton("predict", "Determine Probability"))
 
         ),
-        mainPanel(tableOutput('table1'),
+        mainPanel(
+                tableOutput('table1'),
                 plotOutput('plot1')
         )
 )
